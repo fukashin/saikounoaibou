@@ -1,0 +1,22 @@
+{
+  "name": "javascript_zikken",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "test",
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "electron-active-window": "^0.0.6",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "electron": "^31.0.2"
+  }
+}
