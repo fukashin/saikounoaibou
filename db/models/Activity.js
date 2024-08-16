@@ -1,4 +1,6 @@
 // Sequelize からデータ型 (DataTypes) をインポート
+// クエリを書かなくてもやり取りができるモジュール
+// デフォルトで、updatedAt と createdAtのカラムがある
 const { DataTypes } = require('sequelize');
 // Sequelize インスタンスをインポートし、データベース接続を確立
 const sequelize = require('../index');
