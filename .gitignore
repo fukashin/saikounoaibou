@@ -1,7 +1,5 @@
 # node_modules/ディレクトリを無視
 node_modules/
-db/
-
 # ログファイルを無視　今はない
 *.log
 
