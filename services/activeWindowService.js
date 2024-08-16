@@ -22,6 +22,7 @@ function startActiveWindowMonitoring() {
     try {
       // アクティブなウィンドウ情報を取得
       const result = await activeWindow().getActiveWindow();
+      // resultが空ではないか確認するif条件式
       if (result) {
         // アクティブなウィンドウの名前を取得、もし取得できなければ'Unknown'とする
         const windowName = result.windowName || 'Unknown';
