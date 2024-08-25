@@ -27,6 +27,9 @@ function startActiveWindowMonitoring() {
         // アクティブなウィンドウの名前を取得、もし取得できなければ'Unknown'とする
         const windowName = result.windowName || 'Unknown';
 
+        // ウィンドウ名を加工 (データベースのワードに基づいて)
+        windowName = await extractWindowName(windowName);
+
         // 現在のウィンドウが前回のウィンドウと同じ場合
         if (currentWindow === windowName) {
           // データベースからウィンドウ名に基づいてアクティビティを検索
