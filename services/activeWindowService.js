@@ -26,8 +26,10 @@ function startActiveWindowMonitoring() {
       const result = await activeWindow().getActiveWindow();
       // resultが空ではないか確認するif条件式
       if (result) {
+
         // アクティブなウィンドウの名前を取得、もし取得できなければ'Unknown'とする
         let windowName = result.windowName || 'Unknown';
+        console.error(windowName);
 
         // ウィンドウ名を加工 (データベースのワードに基づいて)
         windowName = await extractWindowName(windowName);
@@ -72,7 +74,6 @@ function startActiveWindowMonitoring() {
 // ウィンドウ名を加工する関数
 async function extractWindowName(windowName) {
   try {
-    console.log('Fetching keywords from database...');
     // データベースからすべてのキーワードを取得
     const keywords = await Keyword.findAll();
 
