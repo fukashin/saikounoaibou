@@ -61,7 +61,7 @@ function startActiveWindowMonitoring() {
       // エラーが発生した場合のエラーメッセージ
       console.error('Error getting active window:', err);
     }
-  }, 1000);
+  }, 10000);
 }
 
 // 関数をモジュールとしてエクスポート

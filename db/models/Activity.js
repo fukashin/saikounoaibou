@@ -7,6 +7,8 @@ const sequelize = require('../index');
 
 // 'Activity' モデルを定義
 // このモデルは、データベース内の 'Activity' テーブルに対応し、ウィンドウのアクティブ時間を保存します
+// 変数sequelizeに入っているのはindexの方でインスタンス化しているsequelize
+// sequelizeでデフォルトで入っているメソッドは多い
 const Activity = sequelize.define('Activity', {
   // 'windowName' フィールドを定義
   // これはアクティブなウィンドウの名前（タイトル）を保存するためのフィールドです
@@ -26,5 +28,13 @@ const Activity = sequelize.define('Activity', {
   }
 });
 
+const Keyword = sequelize.define('Keyword', {
+  word: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true // ワードが重複しないようにする
+  }
+});
+
 // 'Activity' モデルをエクスポートし、他のモジュールで使用できるようにします
-module.exports = Activity;
+module.exports = { Activity, Keyword };
