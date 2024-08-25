@@ -1,5 +1,8 @@
 // dbから Keyword モデルをインポート
-const { Keyword } = require('../db/models/Keyword'); 
+// const { Keyword } = require('../db/models/Keyword');という構文では、Keywordがundefinedになってしまうことがあります。
+// 通常、モデルはデフォルトエクスポートされているため、require文で直接インポートする必要があります。
+const Keyword = require('../db/models/Keyword'); 
+console.log('Keyword Model:', Keyword);
 const { ipcMain } = require('electron');
 
 // キーワードをデータベースに追加する関数
