@@ -23,16 +23,4 @@ async function addKeyword(word) {
   }
 }
 
-function setupIpcHandlers() {
-    // キーワード追加のIPCリスナー
-    ipcMain.on('add-keyword', async (event, keyword) => {
-      try {
-        await addKeyword(keyword);
-        event.reply('keyword-added', `Keyword "${keyword}" added successfully!`);
-      } catch (error) {
-        event.reply('keyword-added', `Failed to add keyword: ${error.message}`);
-      }
-    });
-  }
-  
-  module.exports = setupIpcHandlers;
+module.exports = addKeyword;
