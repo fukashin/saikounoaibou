@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Active Window Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyword Registration</title>
 </head>
 <body>
-  <h1>Active Window Test</h1>
-  <p>Check the console for the active window title.</p>
+    <h1>Keyword Registration</h1>
+    <form id="keywordForm">
+        <label for="keyword">Enter a keyword:</label>
+        <input type="text" id="keyword" name="keyword" required>
+        <button type="submit">Add Keyword</button>
+    </form>
+    <p id="status"></p>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        // フォーム送信イベントをキャプチャ
+        document.getElementById('keywordForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const keyword = document.getElementById('keyword').value;
+
+            // メインプロセスにキーワードを送信
+            ipcRenderer.send('add-keyword', keyword);
+        });
+
+        // メインプロセスからの応答を受け取る
+        ipcRenderer.on('keyword-added', (event, status) => {
+            document.getElementById('status').textContent = status;
+        });
+    </script>
 </body>
 </html>
