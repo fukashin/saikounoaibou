@@ -8,15 +8,15 @@ async function addKeyword(word) {
     // 既にキーワードが存在しないか確認
     const existingKeyword = await Keyword.findOne({ where: { word } });
     if (existingKeyword) {
-      console.log('このキーワードは既に存在します:', word);
+      console.log('sudenialuuuuuuuuuuuuuuuu:', word);
       return;
     }
 
     // キーワードをデータベースに追加
     await Keyword.create({ word });
-    console.log('キーワードが登録されました:', word);
+    console.log('OKKKKKKKKKKKKKKKKKKKKKKKKKKK:', word);
   } catch (error) {
-    console.error('キーワードの登録に失敗しました:', error);
+    console.error('eraaaaaaaaaaaaaaaaaaa:', error);
   }
 }
 
