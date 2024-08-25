@@ -19,7 +19,7 @@ async function deleteRecordById(id) {
   }
 }
 
-
+// 全部をさくじょ
 async function deleteAllRecords() {
     try {
       // 全てのレコードを削除します
