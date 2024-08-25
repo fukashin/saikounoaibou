@@ -1,7 +1,7 @@
 // Electronのアクティブなウィンドウ情報を取得するモジュールをインポート
 const activeWindow = require('electron-active-window');
 // データベースのActivityモデルをインポート
-const Activity = require('../db/models/Activity');
+const Activity = require('../db/models/Activity');//モデルのインポートは｛｝付けない
 const Keyword = require('../db/models/Keyword');
 
 
