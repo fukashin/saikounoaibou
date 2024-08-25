@@ -23,7 +23,7 @@ async function deleteRecordById(id) {
 async function deleteAllRecords() {
     try {
       // 全てのレコードを削除します
-      const deleted = await ModelName.destroy({
+      const deleted = await Activity.destroy({
         where: {}, // 条件を空にすることで全てのレコードを削除
         truncate: false // truncateオプションを使わない場合、各行の削除が記録されます
       });

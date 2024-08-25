@@ -16,4 +16,15 @@ document.getElementById('deleteRecordBtn').addEventListener('click', () => {
       window.electron.ipcRenderer.send('delete-all-records');
     }
   });
+
+  // renderer.js または index.js などのファイルに記述
+  //削除結果がどうなったかを受け取て表示する部分
+
+window.electron.ipcRenderer.on('delete-success', (event, message) => {
+    alert(message);
+  });
+  
+  window.electron.ipcRenderer.on('delete-error', (event, message) => {
+    alert(`Error: ${message}`);
+  });
   
