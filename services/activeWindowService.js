@@ -1,7 +1,7 @@
 // Electronのアクティブなウィンドウ情報を取得するモジュールをインポート
 const activeWindow = require('electron-active-window');
 // データベースのActivityモデルをインポート
-const Activity = require('../db/models/Activity');
+const {Activity,activate} = require('../db/models/Activity');
 
 // 現在アクティブなウィンドウ名を保存する変数
 let currentWindow = null;
@@ -62,6 +62,22 @@ function startActiveWindowMonitoring() {
       console.error('Error getting active window:', err);
     }
   }, 10000);
+}
+
+// ウィンドウ名を加工する関数
+async function extractWindowName(windowName) {
+  // データベースからすべてのキーワードを取得
+  const keywords = await Keyword.findAll();
+
+  // キーワードのリストをループして、ウィンドウ名にマッチするか確認
+  for (const keyword of keywords) {
+    if (windowName.includes(keyword.word)) {
+      return keyword.word;
+    }
+  }
+
+  // マッチするキーワードがない場合はそのまま返す
+  return windowName;
 }
 
 // 関数をモジュールとしてエクスポート
