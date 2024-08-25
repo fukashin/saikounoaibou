@@ -4,6 +4,9 @@ const { app } = require('electron');
 const createWindow = require('./windows/mainWindow');
 //データベースの接続と初期をインポート
 const initializeApp = require('./services/initializeapp');
+// 登録処理をインポート
+const setupIpcHandlers = require('./services/touroku')
+
 
 
 // アプリケーションが準備完了したときに初期化関数を呼び出す
@@ -26,3 +29,6 @@ app.on('activate', function () {
     createWindow();
   }
 });
+
+// IPCハンドラーの設定
+setupIpcHandlers();

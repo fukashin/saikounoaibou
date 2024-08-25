@@ -1,5 +1,6 @@
-// Sequelize から Keyword モデルをインポート
-const { Keyword } = require('./models/Activity'); // Activity.jsでKeywordをエクスポートしていると仮定
+// dbから Keyword モデルをインポート
+const { Keyword } = require('../db/models/Keyword'); 
+const { ipcMain } = require('electron');
 
 // キーワードをデータベースに追加する関数
 async function addKeyword(word) {
@@ -19,3 +20,16 @@ async function addKeyword(word) {
   }
 }
 
+function setupIpcHandlers() {
+    // キーワード追加のIPCリスナー
+    ipcMain.on('add-keyword', async (event, keyword) => {
+      try {
+        await addKeyword(keyword);
+        event.reply('keyword-added', `Keyword "${keyword}" added successfully!`);
+      } catch (error) {
+        event.reply('keyword-added', `Failed to add keyword: ${error.message}`);
+      }
+    });
+  }
+  
+  module.exports = setupIpcHandlers;

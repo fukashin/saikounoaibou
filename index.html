@@ -15,7 +15,8 @@
     <p id="status"></p>
 
     <script>
-        const { ipcRenderer } = require('electron');
+        // ここで require の代わりに window.electron.ipcRenderer を使用
+        const ipcRenderer = window.electron.ipcRenderer;
 
         // フォーム送信イベントをキャプチャ
         document.getElementById('keywordForm').addEventListener('submit', function(event) {

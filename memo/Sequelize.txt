@@ -1,3 +1,15 @@
+
+
+
+
+
+データベース内検索方法
+SELECT * FROM "Activities"
+ORDER BY "updatedAt" DESC;
+
+
+
+
 Sequelizeでできること
 
 

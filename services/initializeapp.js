@@ -2,8 +2,6 @@
 const startActiveWindowMonitoring = require('../services/activeWindowService');
 // データベース接続の設定をインポート
 const sequelize = require('../db');
-// メインウィンドウを作成する関数をインポート
-const createWindow = require('../windows/mainWindow');
 
 // アプリケーションの初期化を行う非同期関数
 async function initializeApp() {

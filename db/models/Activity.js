@@ -28,13 +28,4 @@ const Activity = sequelize.define('Activity', {
   }
 });
 
-const Keyword = sequelize.define('Keyword', {
-  word: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true // ワードが重複しないようにする
-  }
-});
-
-// 'Activity' モデルをエクスポートし、他のモジュールで使用できるようにします
-module.exports = { Activity, Keyword };
+module.exports = Activity;
