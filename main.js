@@ -1,13 +1,12 @@
 // Electronのメインモジュールをインポート
 const { app } = require('electron');
 // メインウィンドウを作成する関数をインポート
-const createWindow = require('./windows/mainWindow');
 //データベースの接続と初期をインポート
 const initializeApp = require('./services/initializeapp');
 // 登録処理をインポート
 const setupIpcHandlers = require('./handlers/handlers')
 // 画面切り替えをインポート
-const gamenkirikae = require('./handlers/gamenkirikae_handlers')
+const createWindow = require('./handlers/gamenkirikae_handlers')
 
 
 
@@ -34,4 +33,4 @@ app.on('activate', function () {
 
 // IPCハンドラーの設定
 setupIpcHandlers();
-gamenkirikae();
+
