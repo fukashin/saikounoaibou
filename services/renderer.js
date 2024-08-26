@@ -9,7 +9,8 @@ document.getElementById('deleteRecordBtn').addEventListener('click', () => {
       window.electron.ipcRenderer.send('delete-record', id);
     }
   });
-  
+  // HTMLのボタンのIDから送られてきたイベントを受け取る
+  // そのあとにハンドラークラスに丸投げするだけ
   document.getElementById('deleteAllRecordsBtn').addEventListener('click', () => {
     // 全レコードを削除
     if (confirm("全部消えるけど、ほんとに削除する?")) {
@@ -19,7 +20,7 @@ document.getElementById('deleteRecordBtn').addEventListener('click', () => {
 
   // renderer.js または index.js などのファイルに記述
   //削除結果がどうなったかを受け取て表示する部分
-
+  // messageはミリティブ型だから単純な文字比較はできないらしい
   window.electron.ipcRenderer.on('delete-success', (event, message) => {
     if (message === undefined || message === null)
        message = "すべて消えた";
