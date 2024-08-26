@@ -15,7 +15,7 @@ function createWindow() {
         }
     });
 
-    mainWindow.loadFile(path.join(__dirname, '../index.html')); // 初期画面をロード
+    mainWindow.loadFile(path.join(__dirname, '../gamen/components/menu.html')); // 初期画面をロード
 }
 
 // 画面を切り替えるIPCハンドラーを設定

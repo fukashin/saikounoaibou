@@ -15,13 +15,20 @@
 
     <p id="status"></p>
 
-<!-- １ボタンを配置 -->
-  <button id="メインメニューボタン">メインメニュー</button>
-  <button id="全アクティブ削除ボタン">アクティブをすべて削除</button>
-  <button id="全キーワード削除ボタン">全キーワードをすべて削除</button>
-  <button id="アクティブ表示ボタン">アクティブ表示ボタン</button>
-  <button id="キーワード表示ボタン">キーワード表示ボタン</button>
+    <!-- １ボタンを配置 -->
+    <div id="menu-container"></div>
+    <script>
+        // 共通メニューを読み込んで挿入
+        fetch('./gamen/components/menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+
+                // ここでイベントリスナーが自動的に登録されます
+            })
+            .catch(error => console.error('Error loading menu:', error));
+    </script>
+
   <script src="./renderers/renderer.js"></script> <!-- レンダラーのスクリプトを読み込みます -->
-  <script src="./renderers/gamenkirikae.js"></script>
 </body>
 </html>

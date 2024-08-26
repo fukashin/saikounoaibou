@@ -5,19 +5,24 @@
 
 // window.electron.ipcRendererを使用して、メインプロセスにメッセージを送信
 // キーワード入力された時の動作
-document.getElementById('キーワード入力').addEventListener('submit', function(event) {
-  event.preventDefault();  // フォームのデフォルト動作を防止
-  const keyword = document.getElementById('keyword').value;
+const keywordForm = document.getElementById('キーワード入力');
+if (keywordForm) {
+  keywordForm.addEventListener('submit', function(event) {
+    event.preventDefault();  // フォームのデフォルト動作を防止
+    const keyword = document.getElementById('keyword').value;
 
-  // メインプロセスにキーワードを送信
-  window.electron.ipcRenderer.send('add-keyword', keyword);
-});
+    // メインプロセスにキーワードを送信
+    window.electron.ipcRenderer.send('add-keyword', keyword);
+  });
+}
 
 // メインプロセスからの応答を受け取る
 window.electron.ipcRenderer.on('keyword-added', (event, status) => {
-  document.getElementById('status').textContent = status;  // 応答メッセージを表示
+  const statusElement = document.getElementById('status');
+  if (statusElement) {
+    statusElement.textContent = status;  // 応答メッセージを表示
+  }
 });
-
 
 
 
@@ -32,11 +37,14 @@ window.electron.ipcRenderer.on('keyword-added', (event, status) => {
   // HTMLのボタンのIDから送られてきたイベントを受け取る
   // そのあとにハンドラークラスに丸投げするだけ
   // 画面のすべてを削除のボタンを押したときの処理
-  document.getElementById('全アクティブ削除ボタン').addEventListener('click', () => {
+  const deleteAllActiveButton = document.getElementById('全アクティブ削除ボタン');
+if (deleteAllActiveButton) {
+  deleteAllActiveButton.addEventListener('click', () => {
     if (confirm("全部消えるけど、ほんとに削除する?")) {
       window.electron.ipcRenderer.send('delete-all-records');
     }
   });
+}
 
   // renderer.js または index.js などのファイルに記述
   //削除結果がどうなったかを受け取て表示する部分
@@ -53,8 +61,11 @@ window.electron.ipcRenderer.on('keyword-added', (event, status) => {
   
 
     // すべてのキーワードを削除のボタンを押したときの処理
-    document.getElementById('全キーワード削除ボタン').addEventListener('click', () => {
-      if (confirm("全部消えるけど、ほんとに削除する?")) {
-        window.electron.ipcRenderer.send('delete-all-keyword-records');
-      }
-    });
+const deleteAllKeywordButton = document.getElementById('全キーワード削除ボタン');
+if (deleteAllKeywordButton) {
+  deleteAllKeywordButton.addEventListener('click', () => {
+    if (confirm("全部消えるけど、ほんとに削除する?")) {
+      window.electron.ipcRenderer.send('delete-all-keyword-records');
+    }
+  });
+}
