@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>画面のアクティブ時間を計測君</h1>
-    <form id="keywordForm">
+    <form id="キーワード入力">
         <label for="keyword">絞り込みキーワード:</label>
         <input type="text" id="keyword" name="keyword" required>
         <button type="submit">キーワード追加</button>
@@ -16,8 +16,9 @@
     <p id="status"></p>
 
 <!-- １ボタンを配置 -->
-  <button id="deleteRecordBtn">アクティブのIDを指定して削除</button>
-  <button id="deleteAllRecordsBtn">アクティブをすべて削除</button>
+  <button id="ID指定アクティブ削除ボタン">アクティブのIDを指定して削除</button>
+  <button id="全アクティブ削除ボタン">アクティブをすべて削除</button>
+  <button id="全キーワード削除ボタン">全キーワードをすべて削除</button>
   <script src="./services/renderer.js"></script> <!-- レンダラーのスクリプトを読み込みます -->
 </body>
 </html>

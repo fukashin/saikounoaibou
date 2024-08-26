@@ -14,7 +14,7 @@ const { ipcMain } = require('electron');
 const addKeyword = require('./touroku');
 
 // レコードを削除するための関数を外部ファイルからインポート
-const { deleteRecordById, deleteAllRecords } = require('./sakujo');
+const { deleteRecordById, deleteAllRecords ,deleteAllkeywordRecords} = require('./sakujo');
 
 // IPCハンドラーを設定する関数
 function setupIpcHandlers() {
@@ -47,7 +47,7 @@ function setupIpcHandlers() {
         }
     });
 
-    // 全レコード削除のIPCハンドラー
+    // 全アクティブレコード削除のIPCハンドラー
     // レンダラープロセスから 'delete-all-records' イベントが送信された時に実行される
     ipcMain.on('delete-all-records', async (event) => {
         try {
@@ -60,6 +60,19 @@ function setupIpcHandlers() {
             event.reply('delete-error', `Failed to delete all records: ${error.message}`);
         }
     });
+
+        // レンダラープロセスから 'delete-all-keyword-records' イベントが送信された時に実行される
+        ipcMain.on('delete-all-keyword-records', async (event) => {
+          try {
+              // すべてのレコードを削除する関数を呼び出し
+              await deleteAllkeywordRecords();
+              // 成功した場合、レンダラープロセスに結果を返信
+              event.reply('delete-success', 'All records were deleted.');
+          } catch (error) {
+              // 失敗した場合、エラーメッセージをレンダラープロセスに返信
+              event.reply('delete-error', `Failed to delete all records: ${error.message}`);
+          }
+      });
 }
 
 // 他のファイルからこの関数を呼び出せるようにエクスポート
