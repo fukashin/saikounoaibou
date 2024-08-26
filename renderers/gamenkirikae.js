@@ -8,5 +8,6 @@ document.getElementById('アクティブ表示ボタン').addEventListener('clic
 });
 document.getElementById('キーワード表示ボタン').addEventListener('click', () => {
     // メインプロセスに新しいウィンドウを開くように指示
+    console.log('キーワード表示画面に遷移イベント送信');  // デバッグ用のログ
     window.electron.ipcRenderer.send('キーワード表示画面に遷移');
 });

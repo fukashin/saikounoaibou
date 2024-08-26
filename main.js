@@ -6,6 +6,8 @@ const createWindow = require('./windows/mainWindow');
 const initializeApp = require('./services/initializeapp');
 // 登録処理をインポート
 const setupIpcHandlers = require('./handlers/handlers')
+// 画面切り替えをインポート
+const gamenkirikae = require('./handlers/gamenkirikae_handlers')
 
 
 
@@ -32,3 +34,4 @@ app.on('activate', function () {
 
 // IPCハンドラーの設定
 setupIpcHandlers();
+gamenkirikae();
