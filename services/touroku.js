@@ -1,3 +1,6 @@
+ここはウィンドウ名を
+
+
 // dbから Keyword モデルをインポート
 // const { Keyword } = require('../db/models/Keyword');という構文では、Keywordがundefinedになってしまうことがあります。
 // 通常、モデルはデフォルトエクスポートされているため、require文で直接インポートする必要があります。

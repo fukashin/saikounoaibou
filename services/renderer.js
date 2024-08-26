@@ -12,7 +12,7 @@ document.getElementById('deleteRecordBtn').addEventListener('click', () => {
   
   document.getElementById('deleteAllRecordsBtn').addEventListener('click', () => {
     // 全レコードを削除
-    if (confirm("Are you sure you want to delete all records?")) {
+    if (confirm("全部消えるけど、ほんとに削除する?")) {
       window.electron.ipcRenderer.send('delete-all-records');
     }
   });
@@ -20,9 +20,11 @@ document.getElementById('deleteRecordBtn').addEventListener('click', () => {
   // renderer.js または index.js などのファイルに記述
   //削除結果がどうなったかを受け取て表示する部分
 
-window.electron.ipcRenderer.on('delete-success', (event, message) => {
+  window.electron.ipcRenderer.on('delete-success', (event, message) => {
+    if (message === undefined || message === null)
+       message = "すべて消えた";
     alert(message);
-  });
+ });
   
   window.electron.ipcRenderer.on('delete-error', (event, message) => {
     alert(`Error: ${message}`);
