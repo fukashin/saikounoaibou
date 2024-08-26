@@ -31,4 +31,10 @@ ipcMain.on('キーワード表示画面に遷移', () => {
     }
 });
 
+ipcMain.on('メインメニュー画面に遷移', () => {
+    if (mainWindow) {
+        mainWindow.loadFile(path.join(__dirname, '../index.html'));
+    }
+});
+
 module.exports = createWindow ;

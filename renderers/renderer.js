@@ -21,14 +21,14 @@ window.electron.ipcRenderer.on('keyword-added', (event, status) => {
 
 
 
-// 画面のID指定削除のボタンを押したときの処理
-document.getElementById('ID指定アクティブ削除ボタン').addEventListener('click', () => {
-    // ID 1のレコードを削除する例（IDはユーザー入力に基づいて変更可能）
-    const id = prompt("Enter the ID of the record to delete:");
-    if (id) {
-      window.electron.ipcRenderer.send('delete-record', id);
-    }
-  });
+// // 画面のID指定削除のボタンを押したときの処理
+// document.getElementById('ID指定アクティブ削除ボタン').addEventListener('click', () => {
+//     // ID 1のレコードを削除する例（IDはユーザー入力に基づいて変更可能）
+//     const id = prompt("Enter the ID of the record to delete:");
+//     if (id) {
+//       window.electron.ipcRenderer.send('delete-record', id);
+//     }
+//   });
   // HTMLのボタンのIDから送られてきたイベントを受け取る
   // そのあとにハンドラークラスに丸投げするだけ
   // 画面のすべてを削除のボタンを押したときの処理

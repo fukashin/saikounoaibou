@@ -1,6 +1,10 @@
 // 画面切り替え用ボタンのレンダーまとめファイル
 
-
+document.getElementById('メインメニューボタン').addEventListener('click', () => {
+    // メインプロセスに新しいウィンドウを開くように指示
+    console.log('キーワード表示画面に遷移イベント送信');  // デバッグ用のログ
+    window.electron.ipcRenderer.send('メインメニュー画面に遷移');
+});
 
 document.getElementById('アクティブ表示ボタン').addEventListener('click', () => {
     // メインプロセスに新しいウィンドウを開くように指示
