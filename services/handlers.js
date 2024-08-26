@@ -39,7 +39,7 @@ function setupIpcHandlers() {
         try {
             // 指定されたIDのレコードを削除する関数を呼び出し
             await deleteRecordById(id);
-            // 成功した場合、レンダラープロセスに結果を返信
+            // 成功した場合、レンダラープロセスに結果を返信　replyはほぼsendと同じ扱いらしい
             event.reply('delete-success', `Record with id ${id} was deleted.`);
         } catch (error) {
             // 失敗した場合、エラーメッセージをレンダラープロセスに返信

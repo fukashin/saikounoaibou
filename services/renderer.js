@@ -2,6 +2,25 @@
 // ボタンのクリックイベントをリッスンし、
 // それに基づいてメインプロセスにメッセージを送信します。
 
+
+// window.electron.ipcRendererを使用して、メインプロセスにメッセージを送信
+document.getElementById('keywordForm').addEventListener('submit', function(event) {
+  event.preventDefault();  // フォームのデフォルト動作を防止
+  const keyword = document.getElementById('keyword').value;
+
+  // メインプロセスにキーワードを送信
+  window.electron.ipcRenderer.send('add-keyword', keyword);
+});
+
+// メインプロセスからの応答を受け取る
+window.electron.ipcRenderer.on('keyword-added', (event, status) => {
+  document.getElementById('status').textContent = status;  // 応答メッセージを表示
+});
+
+
+
+
+// 画面のID指定削除のボタンを押したときの処理
 document.getElementById('deleteRecordBtn').addEventListener('click', () => {
     // ID 1のレコードを削除する例（IDはユーザー入力に基づいて変更可能）
     const id = prompt("Enter the ID of the record to delete:");
@@ -11,8 +30,8 @@ document.getElementById('deleteRecordBtn').addEventListener('click', () => {
   });
   // HTMLのボタンのIDから送られてきたイベントを受け取る
   // そのあとにハンドラークラスに丸投げするだけ
+  // 画面のすべてを削除のボタンを押したときの処理
   document.getElementById('deleteAllRecordsBtn').addEventListener('click', () => {
-    // 全レコードを削除
     if (confirm("全部消えるけど、ほんとに削除する?")) {
       window.electron.ipcRenderer.send('delete-all-records');
     }
