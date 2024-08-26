@@ -5,7 +5,7 @@ const createWindow = require('./windows/mainWindow');
 //データベースの接続と初期をインポート
 const initializeApp = require('./services/initializeapp');
 // 登録処理をインポート
-const setupIpcHandlers = require('./services/handlers')
+const setupIpcHandlers = require('./handlers/handlers')
 
 
 
