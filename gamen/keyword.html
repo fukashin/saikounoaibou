@@ -19,7 +19,7 @@
     <div id="menu-container"></div>
     <script>
         // 共通メニューを読み込んで挿入
-        fetch('../components/menu.html')
+        fetch('./components/menu.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('menu-container').innerHTML = data;
@@ -28,7 +28,7 @@
             })
             .catch(error => console.error('Error loading menu:', error));
     </script>
-  <script src="./renderers/renderer.js"></script> <!-- レンダラーのスクリプトを読み込みます -->
-
+ <script src="../renderers/renderer.js"></script> <!-- レンダラーのスクリプトを読み込みます -->
+ <script src="../renderers/gamenkirikae.js"></script>
 </body>
 </html>
