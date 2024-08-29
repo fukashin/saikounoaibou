@@ -8,6 +8,11 @@ const setupIpcHandlers = require('./handlers/handlers')
 // 画面切り替えをインポート
 const createWindow = require('./handlers/gamenkirikae_handlers')
 
+const path = require('path');
+require('electron-reload')(__dirname, {
+  electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
+});
+
 
 
 // アプリケーションが準備完了したときに初期化関数を呼び出す
